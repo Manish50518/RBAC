@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./features/user/userSlice";
-// import { roleReducer } from "./features/role/roleSlice";
-// import { permissionReducer } from "./features/permission/premissionSlice";
+import roleReducer from "./features/role/roleSlice";
+import permissionReducer from "./features/permission/permissionSlice";
+
 const store = configureStore({
   reducer: {
     user: userReducer,
-    // role: roleReducer,
-    // premission: permissionReducer,
+    role: roleReducer,
+    permission: permissionReducer,
   },
 });
 

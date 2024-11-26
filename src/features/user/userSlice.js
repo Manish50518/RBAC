@@ -4,10 +4,31 @@ const initialState = {
   user: [
     {
       id: 1,
-      userName: "manish",
+      userName: "Manish",
       email: "manishnaik@gmail.com",
-      role: "user",
-      status: "active",
+      role: ["user"],
+      status: true,
+    },
+    {
+      id: 2,
+      userName: "Girsh",
+      email: "girsh33@gmail.com",
+      role: ["admin"],
+      status: false,
+    },
+    {
+      id: 3,
+      userName: "Sujana",
+      email: "sujana623@gmail.com",
+      role: ["admin"],
+      status: true,
+    },
+    {
+      id: 4,
+      userName: "Hrutik",
+      email: "hrutik884@gmail.com",
+      role: ["admin"],
+      status: false,
     },
   ],
 };
@@ -20,7 +41,7 @@ const userSlice = createSlice({
       state.user.push(action.payload);
     },
     deleteUser(state, action) {
-      state.state = state.user.filter((item) => item.id !== action.payload);
+      state.user = state.user.filter((item) => item.id !== action.payload);
     },
   },
 });
