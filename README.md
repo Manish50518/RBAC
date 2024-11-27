@@ -49,6 +49,16 @@ Follow these steps to get the project running locally:
    ```bash
    git clone https://github.com/Manish50518/RBAC.git
    cd RBAC
+
+## 🔧 **Technology Stack**
+
+- **Frontend:**
+  - React.js
+  - Material-UI (for styling and design components)
+  - React Router (for routing and navigation)
+  - JSX & CSS (for component structure and styling)
+  
+   
 ## 📁 **Folder Structure**
 
 This is an overview of the project folder structure to help you understand the organization of the project:
