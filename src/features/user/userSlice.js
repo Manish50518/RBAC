@@ -6,28 +6,35 @@ const initialState = {
       id: 1,
       userName: "Manish",
       email: "manishnaik@gmail.com",
-      role: ["user"],
+      role: ["User"],
       status: true,
     },
     {
       id: 2,
       userName: "Girsh",
       email: "girsh33@gmail.com",
-      role: ["admin"],
+      role: ["Admin"],
       status: false,
     },
     {
       id: 3,
       userName: "Sujana",
       email: "sujana623@gmail.com",
-      role: ["admin"],
+      role: ["Update"],
       status: true,
     },
     {
       id: 4,
       userName: "Hrutik",
       email: "hrutik884@gmail.com",
-      role: ["admin"],
+      role: ["Admin"],
+      status: false,
+    },
+    {
+      id: 5,
+      userName: "Dakshayini",
+      email: "dakshayini344@gmail.com",
+      role: ["Admin"],
       status: false,
     },
   ],
@@ -43,10 +50,17 @@ const userSlice = createSlice({
     deleteUser(state, action) {
       state.user = state.user.filter((item) => item.id !== action.payload);
     },
+    editUser(state, action) {
+      const { id, updatedUser } = action.payload;
+      const index = state.user.findIndex((user) => user.id === id);
+      if (index !== -1) {
+        state.user[index] = { ...state.user[index], ...updatedUser };
+      }
+    },
   },
 });
 
-export const { addUser, deleteUser } = userSlice.actions;
+export const { addUser, deleteUser, editUser } = userSlice.actions;
 
 export default userSlice.reducer;
 

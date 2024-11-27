@@ -1,9 +1,12 @@
 import { Outlet } from "react-router";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 
 function Applayout() {
   return (
     <div>
-      <Outlet />
+      <Header />
+      <Sidebar />
     </div>
   );
 }

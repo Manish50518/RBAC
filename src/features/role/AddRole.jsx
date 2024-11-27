@@ -4,7 +4,8 @@ import Select from "react-select";
 import { getPermission } from "../permission/permissionSlice";
 import { addRole } from "./roleSlice";
 
-function AddRole() {
+// eslint-disable-next-line react/prop-types
+function AddRole({ setRoleModel }) {
   const [roleName, setRoleName] = useState("");
   const [selectPermission, setSelectPermission] = useState([]);
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function AddRole() {
   }));
 
   function handleSelectPermission(selectedOption) {
-    setSelectPermission(selectedOption || []);
+    setSelectPermission(selectedOption);
   }
 
   function handleSubmit(e) {
@@ -32,8 +33,8 @@ function AddRole() {
       return;
     }
 
-    const roles = selectPermission.map((role) => role.label);
-    const newRole = { id: Date.now(), roleName, roles };
+    const permission = selectPermission.map((role) => role.label);
+    const newRole = { id: Date.now(), roleName, permission };
 
     dispatch(addRole(newRole));
 
@@ -41,27 +42,38 @@ function AddRole() {
     setRoleName("");
   }
 
+  function handleDelete() {
+    setRoleModel(false);
+  }
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="model">
+      <form onSubmit={handleSubmit} className="model_form">
+        <button onClick={handleDelete} className="model_close">
+          close
+        </button>
         <p>add the roles over here</p>
-        <label>
-          Role Name:{" "}
-          <input
-            name="text"
-            value={roleName}
-            placeholder="Enter the name"
-            onChange={(e) => setRoleName(e.target.value)}
-          />
-        </label>
-        <label>Role type:</label>{" "}
+        <label htmlFor="rolename"> Role Name:</label>
+        <input
+          name="text"
+          id="rolename"
+          value={roleName}
+          placeholder="Enter the name"
+          className="add_input"
+          onChange={(e) => setRoleName(e.target.value)}
+        />
+        <label htmlFor="permission" className="lable">
+          Role type:
+        </label>{" "}
         <Select
           options={options}
+          id="permission"
           value={selectPermission}
           onChange={handleSelectPermission}
           isMulti={true}
+          className="select_dropdown"
         />
-        <button>Add Roles</button>
+        <button className="add_model_btn btn">Add Roles</button>
       </form>
     </div>
   );

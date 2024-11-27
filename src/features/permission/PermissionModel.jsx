@@ -5,7 +5,8 @@ import { useDispatch } from "react-redux";
 import { addPermission } from "./permissionSlice";
 import { v4 as uuidv4 } from "uuid";
 
-function PermissionModel() {
+// eslint-disable-next-line react/prop-types
+function PermissionModel({ setPermissionModel }) {
   const [permissionName, setPermissionName] = useState("");
   const [accessPermission, setAccessPermission] = useState([]);
 
@@ -50,65 +51,78 @@ function PermissionModel() {
     setAccessPermission([]);
   }
 
+  function handleClose() {
+    setPermissionModel(false);
+    setPermissionName("");
+    setAccessPermission([]);
+  }
+
   console.log(accessPermission);
   console.log(permissionName);
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Add Permissions</h2>
-      <label>
-        Name:
+    <div className="model">
+      <form onSubmit={handleSubmit} className="model_form">
+        <button onClick={handleClose} className="model_close">
+          close
+        </button>
+        <p>Add Permissions</p>
+        <label htmlFor="name" className="lable">
+          Name:
+        </label>
         <input
           type="text"
+          id="name"
           placeholder="Enter permission name"
           value={permissionName}
           onChange={handlePermissionName}
-        />
-      </label>{" "}
-      <h3>Access</h3>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Checkbox
-              name="Read"
-              checked={accessPermission.includes("Read")}
-              onChange={handleCheckboxChange}
-            />
-          }
-          label="Read"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              name="Update"
-              checked={accessPermission.includes("Update")}
-              onChange={handleCheckboxChange}
-            />
-          }
-          label="Update"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              name="Insert"
-              checked={accessPermission.includes("Insert")}
-              onChange={handleCheckboxChange}
-            />
-          }
-          label="Insert"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              name="Delete"
-              checked={accessPermission.includes("Delete")}
-              onChange={handleCheckboxChange}
-            />
-          }
-          label="Delete"
-        />
-      </FormGroup>
-      <button>Add Permission</button>
-    </form>
+          className="add_input"
+        />{" "}
+        <h3>Access</h3>
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="Read"
+                checked={accessPermission.includes("Read")}
+                onChange={handleCheckboxChange}
+              />
+            }
+            label="Read"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="Update"
+                checked={accessPermission.includes("Update")}
+                onChange={handleCheckboxChange}
+              />
+            }
+            label="Update"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="Insert"
+                checked={accessPermission.includes("Insert")}
+                onChange={handleCheckboxChange}
+              />
+            }
+            label="Insert"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="Delete"
+                checked={accessPermission.includes("Delete")}
+                onChange={handleCheckboxChange}
+              />
+            }
+            label="Delete"
+          />
+        </FormGroup>
+        <button className="add_model_btn btn">Add Permission</button>
+      </form>
+    </div>
   );
 }
 

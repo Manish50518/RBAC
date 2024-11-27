@@ -20,9 +20,7 @@ function Permission() {
   function handleOpenAddPermission() {
     setPermissionModel(true);
   }
-  function handleCloseAddPermission() {
-    setPermissionModel(false);
-  }
+
   function handleDelete(id) {
     dispatch(deletePermission(id));
   }
@@ -31,9 +29,12 @@ function Permission() {
   console.log(permission);
 
   return (
-    <>
-      <TableContainer component={Paper}>
-        <button onClick={handleOpenAddPermission}>Add Permission</button>
+    <div className="table_container">
+      {" "}
+      <button onClick={handleOpenAddPermission} className="add_button">
+        Add Permission
+      </button>
+      <TableContainer component={Paper} className="table_container">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -66,9 +67,6 @@ function Permission() {
                   >
                     Delete
                   </Button>
-                  <Button variant="contained" color="success" size="small">
-                    Edit
-                  </Button>
                 </TableCell>
               </TableRow>
             ))}
@@ -77,10 +75,10 @@ function Permission() {
       </TableContainer>
       <div>
         {permissionModel && (
-          <PermissionModel onClose={handleCloseAddPermission} />
+          <PermissionModel setPermissionModel={setPermissionModel} />
         )}
       </div>
-    </>
+    </div>
   );
 }
 

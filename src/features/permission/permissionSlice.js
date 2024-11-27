@@ -2,8 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   permission: [
-    { id: 23, name: "all", access: ["write", "read", "update"] },
-    { id: 2342, name: "Write", access: ["write"] },
+    { id: 1, name: "All", access: ["Read", "Update", "Insert", "Delete"] },
+    { id: 2, name: "Read", access: ["Read"] },
+    { id: 3, name: "Write", access: ["Write"] },
+    { id: 4, name: "Insert", access: ["Insert,Delete"] },
+    { id: 5, name: "Delete", access: ["Delete,Read"] },
   ],
 };
 
@@ -19,10 +22,21 @@ const permissionSlice = createSlice({
         (item) => item.id !== action.payload
       );
     },
+    editPermission(state, action) {
+      const { id, updatedPermission } = action.payload;
+      const index = state.permission.findIndex((item) => item.id === id);
+      if (index !== -1) {
+        state.permission[index] = {
+          ...state.permission[index],
+          ...updatedPermission,
+        };
+      }
+    },
   },
 });
 
-export const { addPermission, deletePermission } = permissionSlice.actions;
+export const { addPermission, deletePermission, editPermission } =
+  permissionSlice.actions;
 
 export default permissionSlice.reducer;
 

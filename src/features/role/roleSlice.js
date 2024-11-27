@@ -5,17 +5,17 @@ const initialState = {
     {
       id: 1,
       roleName: "Admin",
-      roles: ["Read", "Write"],
+      permission: ["Read", "Write"],
     },
     {
       id: 2,
       roleName: "User",
-      roles: ["All"],
+      permission: ["All"],
     },
     {
       id: 3,
       roleName: "Update",
-      roles: ["All", "Delete"],
+      permission: ["All", "Delete"],
     },
   ],
 };
@@ -30,10 +30,17 @@ const roleSlice = createSlice({
     deleteRole(state, action) {
       state.role = state.role.filter((item) => item.id !== action.payload);
     },
+    editRole(state, action) {
+      const { id, updatedRole } = action.payload;
+      const index = state.role.findIndex((role) => role.id === id);
+      if (index !== -1) {
+        state.role[index] = { ...state.role[index], ...updatedRole };
+      }
+    },
   },
 });
 
-export const { addRole, deleteRole } = roleSlice.actions;
+export const { addRole, deleteRole, editRole } = roleSlice.actions;
 
 export default roleSlice.reducer;
 
