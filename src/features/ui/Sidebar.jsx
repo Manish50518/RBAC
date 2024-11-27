@@ -6,16 +6,17 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import GroupIcon from "@mui/icons-material/Group";
+import SecurityIcon from "@mui/icons-material/Security";
+import LockIcon from "@mui/icons-material/Lock";
 import { Link, Outlet } from "react-router";
 
 const drawerWidth = 240;
@@ -46,15 +47,17 @@ function ResponsiveDrawer(props) {
       <Divider />
       <List>
         {[
-          { text: "User Management", path: "/" },
-          { text: "Role Management", path: "/role" },
-          { text: "Permission Management", path: "/permission" },
-        ].map(({ text, path }, index) => (
+          { text: "User Management", path: "/", icon: <GroupIcon /> },
+          { text: "Role Management", path: "/role", icon: <SecurityIcon /> },
+          {
+            text: "Permission Management",
+            path: "/permission",
+            icon: <LockIcon />,
+          },
+        ].map(({ text, path, icon }, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton component={Link} to={path}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              <ListItemIcon>{icon}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
@@ -89,7 +92,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            RBAC
+            <strong>Role-Based Access Control (RBAC) UI</strong>
           </Typography>
         </Toolbar>
       </AppBar>
