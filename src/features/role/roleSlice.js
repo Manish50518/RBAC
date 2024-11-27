@@ -5,7 +5,7 @@ const initialState = {
     {
       id: 1,
       roleName: "Admin",
-      permission: ["Read", "Write"],
+      permission: ["Read", "Insert"],
     },
     {
       id: 2,
@@ -16,6 +16,16 @@ const initialState = {
       id: 3,
       roleName: "Update",
       permission: ["All", "Delete"],
+    },
+    {
+      id: 4,
+      roleName: "Viewer",
+      permission: ["Read"],
+    },
+    {
+      id: 5,
+      roleName: "Editor",
+      permission: ["Read", "Update", "Insert"],
     },
   ],
 };

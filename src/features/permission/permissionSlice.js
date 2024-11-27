@@ -4,9 +4,9 @@ const initialState = {
   permission: [
     { id: 1, name: "All", access: ["Read", "Update", "Insert", "Delete"] },
     { id: 2, name: "Read", access: ["Read"] },
-    { id: 3, name: "Write", access: ["Write"] },
-    { id: 4, name: "Insert", access: ["Insert,Delete"] },
-    { id: 5, name: "Delete", access: ["Delete,Read"] },
+    { id: 3, name: "Update", access: ["Update"] },
+    { id: 4, name: "Insert", access: ["Insert"] },
+    { id: 5, name: "Delete", access: ["Delete"] },
   ],
 };
 
