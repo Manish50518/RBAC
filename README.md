@@ -49,5 +49,34 @@ Follow these steps to get the project running locally:
    ```bash
    git clone https://github.com/Manish50518/RBAC.git
    cd RBAC
+## 📁 **Folder Structure**
 
+This is an overview of the project folder structure to help you understand the organization of the project:
+
+```plaintext
+RBAC/
+├── public/                # Static files like index.html, images, etc.
+│   ├── index.html         # Main HTML file
+│   └── favicon.ico        # Favicon for the project
+│
+├── src/                   # All source code files
+│   ├── components/        # Reusable components such as buttons, forms, etc.
+│   │   ├── Navbar.js      # The Navbar component
+│   │   ├── Sidebar.js     # The Sidebar component
+│   │   └── UserCard.js    # A user display component
+│   │
+│   ├── pages/             # Pages that define the structure of the sections
+│   │   ├── UserManagement.js  # User management page
+│   │   ├── RoleManagement.js  # Role management page
+│   │   └── PermissionManagement.js  # Permission management page
+│   │
+│   ├── App.js             # Main app component that handles routing and layout
+│   ├── index.js           # Entry point of the application where ReactDOM is rendered
+│   └── styles/            # Custom styling for the app
+│       ├── theme.js       # Theme customization for Material-UI
+│       └── global.css     # Global styles applied across the app
+│
+├── package.json           # NPM dependencies and scripts
+├── .gitignore             # List of files/folders to ignore in version control
+└── README.md              # Project documentation (this file)
 
