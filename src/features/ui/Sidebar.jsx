@@ -50,7 +50,7 @@ function ResponsiveDrawer(props) {
           { text: "User Management", path: "/", icon: <GroupIcon /> },
           { text: "Role Management", path: "/role", icon: <SecurityIcon /> },
           {
-            text: "Dynamic Permissions:",
+            text: "Dynamic Permission",
             path: "/permission",
             icon: <LockIcon />,
           },
