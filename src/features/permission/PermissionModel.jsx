@@ -63,7 +63,7 @@ function PermissionModel({ setPermissionModel }) {
     <div className="model">
       <form onSubmit={handleSubmit} className="model_form">
         <button onClick={handleClose} className="model_close">
-          close
+          X
         </button>
         <p>Add Permissions</p>
         <label htmlFor="name" className="lable">

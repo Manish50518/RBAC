@@ -50,7 +50,7 @@ function AddRole({ setRoleModel }) {
     <div className="model">
       <form onSubmit={handleSubmit} className="model_form">
         <button onClick={handleDelete} className="model_close">
-          close
+          X
         </button>
         <p>add the roles over here</p>
         <label htmlFor="rolename"> Role Name:</label>
