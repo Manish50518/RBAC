@@ -4,7 +4,6 @@ import Permission from "./features/permission/Permission";
 import Error from "./features/ui/Error";
 import Applayout from "./features/ui/Applayout";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import AddUser from "./features/user/AddUser";
 
 const router = createBrowserRouter([
   {
@@ -15,10 +14,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <User />,
       },
-      {
-        path: "/adduser",
-        element: <AddUser />,
-      },
+
       {
         path: "/role",
         element: <Role />,
