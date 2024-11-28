@@ -18,8 +18,8 @@ const initialState = {
     },
     {
       id: 3,
-      userName: "Sujana",
-      email: "sujana623@gmail.com",
+      userName: "Sujan",
+      email: "sujan623@gmail.com",
       role: ["Update"],
       status: true,
     },
@@ -32,8 +32,8 @@ const initialState = {
     },
     {
       id: 5,
-      userName: "Dakshayini",
-      email: "dakshayini344@gmail.com",
+      userName: "Soumya",
+      email: "soumya344@gmail.com",
       role: ["Admin"],
       status: false,
     },
