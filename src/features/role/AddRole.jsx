@@ -37,7 +37,7 @@ function AddRole({ setRoleModel }) {
     const newRole = { id: Date.now(), roleName, permission };
 
     dispatch(addRole(newRole));
-
+    setRoleModel(false);
     setSelectPermission([]);
     setRoleName("");
   }
