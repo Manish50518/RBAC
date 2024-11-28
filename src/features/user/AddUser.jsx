@@ -9,33 +9,45 @@ function AddUser({ setModel }) {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [selectUserRole, setSelectUserRole] = useState(null);
+  const [userStatus, setUserStatus] = useState(null);
   const dispatch = useDispatch();
   const roles = useSelector(getRole);
 
-  const options = roles.map((item) => ({
+  const roleOptions = roles.map((item) => ({
     value: item.roleName,
     label: item.roleName,
   }));
 
-  console.log(selectUserRole);
+  const statusOptions = [
+    { value: true, label: "True" },
+    { value: false, label: "False" },
+  ];
 
   function handleSelectRole(selectedOption) {
     setSelectUserRole(selectedOption || null);
+  }
+
+  function handleSelectStatus(selectedOption) {
+    setUserStatus(selectedOption || null);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
     if (!userName.trim()) {
-      alert("User name is requried");
+      alert("User name is required");
       return;
     }
     if (!userEmail.trim()) {
-      alert("User email is requried");
+      alert("User email is required");
       return;
     }
     if (!selectUserRole) {
-      alert("User role is requried");
+      alert("User role is required");
+      return;
+    }
+    if (!userStatus) {
+      alert("User status is required");
       return;
     }
 
@@ -44,19 +56,22 @@ function AddUser({ setModel }) {
       userName,
       email: userEmail,
       role: selectUserRole.label,
-      status: false,
+      status: userStatus.value,
     };
+
     dispatch(addUser(newUser));
 
     setUserName("");
     setUserEmail("");
     setSelectUserRole(null);
+    setUserStatus(null);
     setModel(false);
   }
 
   function handleClose() {
     setModel(false);
   }
+
   return (
     <div className="model">
       <form onSubmit={handleSubmit} className="model_form">
@@ -86,14 +101,24 @@ function AddUser({ setModel }) {
           onChange={(e) => setUserEmail(e.target.value)}
           className="add_input"
         />
-        <label htmlFor="select" className="lable">
+        <label htmlFor="selectRole" className="lable">
           Select Role:
         </label>
         <Select
-          options={options}
-          id="select"
+          options={roleOptions}
+          id="selectRole"
           value={selectUserRole}
           onChange={handleSelectRole}
+          className="select_dropdown"
+        />
+        <label htmlFor="selectStatus" className="lable">
+          Select Status:
+        </label>
+        <Select
+          options={statusOptions}
+          id="selectStatus"
+          value={userStatus}
+          onChange={handleSelectStatus}
           className="select_dropdown"
         />
         <button className="add_model_btn btn">Add User</button>
