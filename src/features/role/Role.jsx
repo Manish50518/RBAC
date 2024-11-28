@@ -49,9 +49,11 @@ function Role() {
 
   return (
     <div className="table_container">
+      <h2>Role Management</h2>
       <button onClick={handleAddRole} className="add_button">
         Add Role
       </button>
+
       <TableContainer component={Paper} className="table_container">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

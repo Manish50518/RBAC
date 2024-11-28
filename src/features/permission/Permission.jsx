@@ -30,7 +30,7 @@ function Permission() {
 
   return (
     <div className="table_container">
-      {" "}
+      <h2>Dynamic Permission</h2>
       <button onClick={handleOpenAddPermission} className="add_button">
         Add Permission
       </button>

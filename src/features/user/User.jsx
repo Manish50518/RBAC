@@ -53,6 +53,7 @@ function UserTable() {
 
   return (
     <div className="table_container">
+      <h2>User Management</h2>
       <button onClick={handleAddUser} className="add_button">
         Add User
       </button>
