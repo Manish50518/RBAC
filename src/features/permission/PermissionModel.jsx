@@ -47,6 +47,7 @@ function PermissionModel({ setPermissionModel }) {
     };
     dispatch(addPermission(newPermission));
 
+    setPermissionModel(false);
     setPermissionName("");
     setAccessPermission([]);
   }
