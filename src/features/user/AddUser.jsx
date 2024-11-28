@@ -19,8 +19,8 @@ function AddUser({ setModel }) {
   }));
 
   const statusOptions = [
-    { value: true, label: "True" },
-    { value: false, label: "False" },
+    { value: true, label: "	Active" },
+    { value: false, label: "	Inactive" },
   ];
 
   function handleSelectRole(selectedOption) {
