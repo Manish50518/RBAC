@@ -22,26 +22,29 @@ function UserTable() {
   const dispatch = useDispatch();
   const roles = useSelector(getRole);
   const [model, setModel] = useState(false);
-  const [editMode, setEditMode] = useState(null); // Track the ID of the user being edited
-  const [editForm, setEditForm] = useState({}); // Track form inputs for editing
-
+  const [editMode, setEditMode] = useState(null);
+  const [editForm, setEditForm] = useState({});
   function handleEditClick(user) {
-    setEditMode(user.id); // Set the user ID in edit mode
+    setEditMode(user.id);
     setEditForm({
       userName: user.userName,
       email: user.email,
       role: user.role,
-    }); // Populate form with existing values
+      status: user.status,
+    });
   }
 
   function handleInputChange(e) {
     const { name, value } = e.target;
     setEditForm((prev) => ({ ...prev, [name]: value }));
   }
+  const handleStatusToggle = () => {
+    setEditForm((prev) => ({ ...prev, status: !prev.status }));
+  };
 
   const handleSave = (id) => {
     dispatch(editUser({ id, updatedUser: editForm }));
-    setEditMode(null); // Exit edit mode
+    setEditMode(null);
   };
 
   function handleAddUser() {
@@ -65,6 +68,9 @@ function UserTable() {
               </TableCell>
               <TableCell>
                 <strong>Role</strong>
+              </TableCell>
+              <TableCell>
+                <strong>Status</strong>
               </TableCell>
               <TableCell>
                 <strong>Actions</strong>
@@ -126,6 +132,27 @@ function UserTable() {
                     </Select>
                   ) : (
                     user.role
+                  )}
+                </TableCell>
+                <TableCell>
+                  {editMode === user.id ? (
+                    <Button
+                      variant="outlined"
+                      color={editForm.status ? "success" : "error"}
+                      onClick={handleStatusToggle}
+                      size="small"
+                    >
+                      {editForm.status ? "Active" : "Inactive"}
+                    </Button>
+                  ) : (
+                    <span
+                      style={{
+                        color: user.status ? "green" : "red",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {user.status ? "Active" : "Inactive"}
+                    </span>
                   )}
                 </TableCell>
                 <TableCell>

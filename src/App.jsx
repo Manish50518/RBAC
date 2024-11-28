@@ -14,7 +14,6 @@ const router = createBrowserRouter([
         path: "/",
         element: <User />,
       },
-
       {
         path: "/role",
         element: <Role />,
